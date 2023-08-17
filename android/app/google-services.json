@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1035736435524",
+    "project_id": "atunewsfeed",
+    "storage_bucket": "atunewsfeed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035736435524:android:2392eee81821a2f9232511",
+        "android_client_info": {
+          "package_name": "com.example.atunews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035736435524-vdf4b08t32onifu70p859r75n0j6oja7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDOMqqCf87UJeVPgI0IxNHeZV8Qb1MeNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035736435524-vdf4b08t32onifu70p859r75n0j6oja7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1035736435524-1245q1h45c4fm72dep20gsllcrsp5uud.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.atunews.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
