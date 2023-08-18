@@ -1,4 +1,6 @@
+import 'package:atunews/views/create_account.dart';
 import 'package:atunews/views/home.dart';
+import 'package:atunews/views/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,10 +13,14 @@ class AtuNewsHub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "ATU News Hub",
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
+      routes: {
+        '/login/': (context) => const Login(),
+        '/register/': (context) => const Register(),
+      },
     );
   }
 }
