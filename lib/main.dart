@@ -1,6 +1,7 @@
 import 'package:atunews/views/create_account.dart';
 import 'package:atunews/views/home.dart';
 import 'package:atunews/views/login.dart';
+import 'package:atunews/views/post_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class AtuNewsHub extends StatelessWidget {
       routes: {
         '/login/': (context) => const Login(),
         '/register/': (context) => const Register(),
+        '/postView/': (context) => const PostView(),
       },
     );
   }

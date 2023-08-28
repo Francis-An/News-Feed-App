@@ -1,6 +1,6 @@
-import 'package:atunews/views/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer' as devtools show log;
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -36,209 +36,148 @@ class _RegisterState extends State<Register> {
     const secondary_color = Color(0xffD3AF35);
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const Text(
-                "Create Account",
-                style: TextStyle(
-                  color: primary_color,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text(
+                  "Create Account",
+                  style: TextStyle(
+                    color: primary_color,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(100),
-              ),
-              //Text fields begins here
+                const Padding(
+                  padding: EdgeInsets.all(100),
+                ),
+                //Text fields begins here
 
-              //User email input text field
-              TextField(
-                controller: _email,
-                enableSuggestions: false,
-                autocorrect: false,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  hintText: "Enter your Email...",
-                  labelText: "Email",
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 3,
-                      color: primary_color,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                //User email input text field
+                TextField(
+                  controller: _email,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    hintText: "Enter your Email...",
+                    labelText: "Email",
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
                         width: 3,
                         color: primary_color,
                       ),
-                      borderRadius: BorderRadius.circular(15)),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(10),
-              ),
-              //Password Text Field
-              TextField(
-                controller: _password,
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                decoration: InputDecoration(
-                  hintText: "Enter your password...",
-                  labelText: "Password",
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 3,
-                      color: primary_color,
                     ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        width: 3,
-                        color: primary_color,
-                      ),
-                      borderRadius: BorderRadius.circular(15)),
-                ),
-              ),
-              const Padding(padding: EdgeInsets.all(50)),
-              Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                    child: Text(
-                      "Already have Account ",
-                      style: TextStyle(
-                        color: primary_color,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamedAndRemoveUntil('/login/',(context) => false);
-                      // return Login();
-                    },
-                    child: const Text(
-                      "Sign in",
-                      style: TextStyle(
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 3,
                           color: primary_color,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+                        ),
+                        borderRadius: BorderRadius.circular(15)),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(10),
+                ),
+                //Password Text Field
+                TextField(
+                  controller: _password,
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                    hintText: "Enter your password...",
+                    labelText: "Password",
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        width: 3,
+                        color: primary_color,
+                      ),
                     ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 3,
+                          color: primary_color,
+                        ),
+                        borderRadius: BorderRadius.circular(15)),
                   ),
-                ],
-              ),
-              const Padding(padding: EdgeInsets.all(20)),
-              //Button
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: secondary_color,
-                    minimumSize: const Size.fromHeight(50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                ),
+                const Padding(padding: EdgeInsets.all(50)),
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                      child: Text(
+                        "Already have Account ",
+                        style: TextStyle(
+                          color: primary_color,
+                        ),
+                      ),
                     ),
-                  ),
-                  child: const Text(
-                    "Create Account",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () async {
-                    // final name = _name.text;
-                    final email = _email.text;
-                    final password = _password.text;
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/login/', (context) => false);
+                        // return Login();
+                      },
+                      child: const Text(
+                        "Sign in",
+                        style: TextStyle(
+                            color: primary_color,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                    ),
+                  ],
+                ),
+                const Padding(padding: EdgeInsets.all(20)),
+                //Button
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: secondary_color,
+                      minimumSize: const Size.fromHeight(50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    child: const Text(
+                      "Create Account",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    onPressed: () async {
+                      // final name = _name.text;
+                      final email = _email.text;
+                      final password = _password.text;
 
-                    //Using try and catch to catch exceptions
-                    try {
-                      final userCredential = await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                              email: email, password: password);
-                      print(userCredential);
-                    } on FirebaseAuthException catch (e) {
-                      if (e.code == "email-already-in-use") {
-                        print("Email is already registered");
-                      } else if (e.code == "weak-password") {
-                        print("Your password is weak!");
-                      } else if (e.code == "invalid-email") {
-                        print("Email is not correct");
-                      } else {
-                        print(e.code);
+                      //Using try and catch to catch exceptions
+                      try {
+                        final userCredential = await FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                                email: email, password: password);
+                        devtools.log(userCredential.toString());
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == "email-already-in-use") {
+                          devtools.log("Email is already registered");
+                        } else if (e.code == "weak-password") {
+                          devtools.log("Your password is weak!");
+                        } else if (e.code == "invalid-email") {
+                          devtools.log("Email is not correct");
+                        } else {
+                          devtools.log(e.code);
+                        }
                       }
-                    }
-                    //  catch (e) {
-                    //   print(e);
-                    // }
-                  }),
-            ],
+                      //  catch (e) {
+                      //   print(e);
+                      // }
+                    }),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-//Button widget for login page
-// class Button extends StatelessWidget {
-//   const Button({super.key, this.labelB});
-//   final String? labelB;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     const secondary_color = Color(0xffD3AF35);
-//     return ElevatedButton(
-//       style: ElevatedButton.styleFrom(
-//         backgroundColor: secondary_color,
-//         minimumSize: const Size.fromHeight(50),
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(15),
-//         ),
-//       ),
-//       child: const Text(
-//         "Create Account",
-//         style: TextStyle(fontSize: 20),
-//       ),
-//       onPressed: () async {
-//       },
-//     );
-//   }
-// }
-
-
-//Input field widget for login page
-// class InputField extends StatefulWidget {
-//   const InputField({super.key, this.text, this.label,});
-//   final String? text;
-//   final String? label;
- 
-
-//   @override
-//   State<InputField> createState() => _InputFieldState();
-// }
-
-// class _InputFieldState extends State<InputField> {
-//   @override
-//   Widget build(BuildContext context) {
-//     const primary_color = Color(0xff1E4B7F);
-//     return TextField(
-//       // controller: widget.controller!,
-//       decoration: InputDecoration(
-//         hintText: widget.text,
-//         labelText: widget.label,
-//         focusedBorder: const OutlineInputBorder(
-//           borderSide: BorderSide(
-//             width: 3,
-//             color: primary_color,
-//           ),
-//         ),
-//         enabledBorder: OutlineInputBorder(
-//             borderSide: const BorderSide(
-//               width: 3,
-//               color: primary_color,
-//             ),
-//             borderRadius: BorderRadius.circular(15)),
-//       ),
-//     );
-//   }
-// }
